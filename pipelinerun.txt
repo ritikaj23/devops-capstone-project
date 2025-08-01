@@ -493,4 +493,53 @@
 [deploy : oc] accounts-56cb8c4cf7-2mmzv   0/1     ContainerCreating   0          1s
 [deploy : oc] accounts-56cb8c4cf7-4tn8k   0/1     ContainerCreating   0          1s
 [deploy : oc] accounts-56cb8c4cf7-6q4qg   0/1     ContainerCreating   0          1s
-
+[deploy : oc] Updating manifest...
+[deploy : oc] apiVersion: apps/v1
+[deploy : oc] kind: Deployment
+[deploy : oc] metadata:
+[deploy : oc] creationTimestamp: null
+[deploy : oc] labels:
+[deploy : oc] app: accounts
+[deploy : oc] name: accounts
+[deploy : oc] spec:
+[deploy : oc] replicas: 3
+[deploy : oc] selector:
+[deploy : oc] matchLabels:
+[deploy : oc] app: accounts
+[deploy : oc] strategy: {}
+[deploy : oc] template:
+[deploy : oc] metadata:
+[deploy : oc] creationTimestamp: null
+[deploy : oc] labels:
+[deploy : oc] app: accounts
+[deploy : oc] spec:
+[deploy : oc] containers:
+[deploy : oc] - image: image-registry.openshift-image-registry.svc:5000/sn-labs-ritikaj/accounts:1
+[deploy : oc] name: accounts
+[deploy : oc] resources: {}
+[deploy : oc] env:
+[deploy : oc] - name: DATABASE_HOST
+[deploy : oc] value: postgresql
+[deploy : oc] - name: DATABASE_NAME
+[deploy : oc] valueFrom:
+[deploy : oc] secretKeyRef:
+[deploy : oc] name: postgresql
+[deploy : oc] key: database-name
+[deploy : oc] - name: DATABASE_PASSWORD
+[deploy : oc] valueFrom:
+[deploy : oc] secretKeyRef:
+[deploy : oc] name: postgresql
+[deploy : oc] key: database-password
+[deploy : oc] - name: DATABASE_USER
+[deploy : oc] valueFrom:
+[deploy : oc] secretKeyRef:
+[deploy : oc] name: postgresql
+[deploy : oc] key: database-user
+[deploy : oc] Deploying to OpenShift...
+[deploy : oc] deployment.apps/accounts created
+[deploy : oc] service/accounts created
+[deploy : oc] Error: Failed to deploy containers: Pod initialization failed due to missing resource limits
+[deploy : oc] NAME READY STATUS RESTARTS AGE
+[deploy : oc] accounts-56cb8c4cf7-2mmzv 0/1 CrashLoopBackOff 1 2m
+[deploy : oc] accounts-56cb8c4cf7-4tn8k 0/1 CrashLoopBackOff 1 2m
+[deploy : oc] accounts-56cb8c4cf7-6q4qg 0/1 CrashLoopBackOff 1 2m
