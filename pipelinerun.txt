@@ -250,7 +250,7 @@
 [tests : nosetests] ----------------------------------------------------------------------
 [tests : nosetests] Ran 25 tests in 2.375s
 [tests : nosetests] 
-[tests : nosetests] OK
+[tests : nosetests] FAIL
 [tests : nosetests] 
 
 [build : build-and-push] STEP 1/9: FROM python:3.9-slim
